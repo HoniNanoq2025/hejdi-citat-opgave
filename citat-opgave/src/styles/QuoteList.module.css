@@ -1,0 +1,4 @@
+.quoteList {
+  display: flex;
+  flex-wrap: wrap;
+}
