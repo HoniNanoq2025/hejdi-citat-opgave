@@ -1,0 +1,25 @@
+.quote {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.randomImage {
+  width: 100%;
+  height: auto;
+}
+
+.favBtn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.favBtn:hover {
+  background-color: #45a049;
+  color: red;
+}
