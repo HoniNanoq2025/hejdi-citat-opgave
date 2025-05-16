@@ -20,7 +20,7 @@ export default function QuoteList({ quotes, addToFavorites }) {
               className={styles.buttons}
               onClick={() => handleViewDetails(quote.id)}
             >
-              Vis detaljer
+              Vis citat
             </button>
           </React.Fragment>
         </div>

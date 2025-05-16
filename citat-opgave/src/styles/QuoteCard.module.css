@@ -1,14 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
 .quote {
-  border: 1px solid #ccc;
+  border: none;
   padding: 10px;
   margin: 10px;
   width: 200px;
+  height: 600px;
   text-align: center;
 }
 
 .randomImage {
   width: 100%;
   height: auto;
+}
+
+h3 {
+  font-family: "Pacifico", sans-serif;
 }
 
 .favBtn {
@@ -20,6 +27,6 @@
 }
 
 .favBtn:hover {
-  background-color: #45a049;
+  background-color: pink;
   color: red;
 }
