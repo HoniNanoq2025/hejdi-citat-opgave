@@ -1,15 +1,29 @@
+import React from "react";
 import QuoteCard from "./QuoteCard";
 import styles from "../styles/QuoteList.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function QuoteList({ quotes, addToFavorites }) {
+  const navigate = useNavigate();
+
+  const handleViewDetails = (quoteId) => {
+    navigate(`/quote/${quoteId}`);
+  };
+
   return (
     <div className={styles.quoteList}>
       {quotes.map((quote) => (
-        <QuoteCard
-          key={quote.id}
-          quote={quote}
-          addToFavorites={addToFavorites}
-        />
+        <div className={styles.quoteContainer}>
+          <React.Fragment key={quote.id}>
+            <QuoteCard quote={quote} addToFavorites={addToFavorites} />
+            <button
+              className={styles.buttons}
+              onClick={() => handleViewDetails(quote.id)}
+            >
+              Vis detaljer
+            </button>
+          </React.Fragment>
+        </div>
       ))}
     </div>
   );

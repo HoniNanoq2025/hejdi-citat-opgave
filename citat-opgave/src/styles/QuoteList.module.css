@@ -2,3 +2,30 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.quoteContainer {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  background-color: black;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.buttons {
+  margin: 5px 0;
+  padding: 12px;
+  background-color: #4a6fa5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  text-align: center;
+}
+
+.buttons:hover {
+  background-color: #3a5a84;
+}
