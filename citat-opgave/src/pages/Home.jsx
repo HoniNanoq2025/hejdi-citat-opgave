@@ -59,8 +59,8 @@ export default function Home({ quotes, addToFavorites }) {
       <div className={styles.pagination}>
         <Pagination
           page={page}
-          totalPages={Math.ceil(sortedFilteredQuotes.length / QUOTES_PER_PAGE)}
-          onPageChange={(newPage) => setPage(newPage)}
+          totalPages={totalPages}
+          onPageChange={setPage}
         />
       </div>
     </div>
