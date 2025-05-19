@@ -12,18 +12,19 @@ export default function App() {
   const [quotes, setQuotes] = useState([]);
   const [favorite, setFavorite] = useState([]);
   const [page, setPage] = useState(1); // så starter første side på 1
-  const [total, setTotal] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     const fetchQuotes = async () => {
       try {
         const skip = (page - 1) * QUOTES_PER_PAGE;
         const response = await fetch(
-          `https://dummyjson.com/quotes=${USERS_PER_PAGE}$${skip}`
+          `https://dummyjson.com/quotes=?limit=${QUOTES_PER_PAGE}$${skip}`
         );
         const data = await response.json();
 
         setQuotes(data.quotes);
+        setTotalPages(Math.ceil(data.total / QUOTES_PER_PAGE));
       } catch (error) {
         console.error("Fejl ved indhentning", error);
       }

@@ -5,7 +5,13 @@ import SortingDropdown from "../components/SortingDropdown";
 import styles from "../App.module.css";
 import Pagination from "../components/Pagination";
 
-export default function Home({ quotes, addToFavorites }) {
+export default function Home({
+  quotes,
+  addToFavorites,
+  page,
+  setPage,
+  totalPages,
+}) {
   const [sortBy, setSortBy] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
