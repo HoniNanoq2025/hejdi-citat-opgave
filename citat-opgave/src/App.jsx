@@ -16,36 +16,23 @@ export default function App() {
 
   useEffect(() => {
     const fetchQuotes = async () => {
-      const skip = (page - 1) * QUOTES_PER_PAGE; // så vi kan skippe de første 10 brugere
-      const response = await fetch(
-        `https://dummyjson.com/quotes?limit=${QUOTES_PER_PAGE}&skip=${skip}`
-      );
-      const data = await response.json();
-
-      setQuotes(data.quotes);
-      setTotalPages(data.totalPages);
-    };
-
-    fetchQuotes();
-    /* const fetchQuotes = async () => {
       try {
         const skip = (page - 1) * QUOTES_PER_PAGE;
         const response = await fetch(
-          `https://dummyjson.com/quotes=?limit=${QUOTES_PER_PAGE}&skip=${skip}`
+          `https://dummyjson.com/quotes?limit=${QUOTES_PER_PAGE}&skip=${skip}`
         );
         const data = await response.json();
 
         setQuotes(data.quotes);
-        setTotalPages(Math.ceil(data.totalPages / QUOTES_PER_PAGE));
+        // Calculate total pages based on total count divided by quotes per page
+        setTotalPages(Math.ceil(data.total / QUOTES_PER_PAGE));
       } catch (error) {
         console.error("Fejl ved indhentning", error);
       }
     };
 
-    fetchQuotes(); */
+    fetchQuotes();
   }, [page]);
-
-  const total = Math.ceil(totalPages / QUOTES_PER_PAGE);
 
   useEffect(() => {
     const savedFavorite = localStorage.getItem("favorite");
