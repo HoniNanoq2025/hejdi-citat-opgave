@@ -6,14 +6,21 @@ import FavoritesPage from "./pages/FavoritesPage";
 import QuoteDetail from "./pages/QuoteDetail"; // Added import for QuoteDetail
 import styles from "./App.module.css";
 
+const QUOTES_PER_PAGE = 10;
+
 export default function App() {
   const [quotes, setQuotes] = useState([]);
   const [favorite, setFavorite] = useState([]);
+  const [page, setPage] = useState(1); // så starter første side på 1
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const fetchQuotes = async () => {
       try {
-        const response = await fetch("https://dummyjson.com/quotes");
+        const skip = (page - 1) * QUOTES_PER_PAGE;
+        const response = await fetch(
+          `https://dummyjson.com/quotes=${USERS_PER_PAGE}$${skip}`
+        );
         const data = await response.json();
 
         setQuotes(data.quotes);
@@ -23,7 +30,7 @@ export default function App() {
     };
 
     fetchQuotes();
-  }, []);
+  }, [page]);
 
   useEffect(() => {
     const savedFavorite = localStorage.getItem("favorite");
@@ -35,7 +42,6 @@ export default function App() {
   }, [favorite]);
 
   const addToFavorites = (quote) => {
-    // Check if quote is already in favorites to avoid duplicates
     if (!favorite.some((fav) => fav.id === quote.id)) {
       setFavorite([...favorite, quote]);
     }
@@ -45,7 +51,6 @@ export default function App() {
     <Router>
       <div className={styles.container}>
         <Header favCount={favorite.length} />{" "}
-        {/* Fixed typo: length not lenght */}
         <Routes>
           <Route
             path="/"

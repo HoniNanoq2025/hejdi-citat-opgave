@@ -3,6 +3,7 @@ import QuoteList from "../components/QuoteList";
 import SearchFilter from "../components/SearchFilter";
 import SortingDropdown from "../components/SortingDropdown";
 import styles from "../App.module.css";
+import Pagination from "../components/Pagination";
 
 export default function Home({ quotes, addToFavorites }) {
   const [sortBy, setSortBy] = useState("");
@@ -54,6 +55,14 @@ export default function Home({ quotes, addToFavorites }) {
         quotes={sortedFilteredQuotes}
         addToFavorites={addToFavorites}
       />
+
+      <div className={styles.pagination}>
+        <Pagination
+          page={page}
+          totalPages={Math.ceil(sortedFilteredQuotes.length / QUOTES_PER_PAGE)}
+          onPageChange={(newPage) => setPage(newPage)}
+        />
+      </div>
     </div>
   );
 }
