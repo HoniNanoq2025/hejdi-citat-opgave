@@ -1,4 +1,4 @@
-export default function Pagination({ page, totalPages, onPageChange }) {
+export default function Pagination({ page, total, onPageChange }) {
   return (
     <div>
       <button onClick={() => onPageChange(page - 1)} disabled={page === 1}>
@@ -7,13 +7,10 @@ export default function Pagination({ page, totalPages, onPageChange }) {
 
       <span>
         {" "}
-        Side {page} af {totalPages}{" "}
+        Side {page} af {total}{" "}
       </span>
 
-      <button
-        onClick={() => onPageChange(page + 1)}
-        disabled={page === totalPages}
-      >
+      <button onClick={() => onPageChange(page + 1)} disabled={page === total}>
         Næste
       </button>
     </div>

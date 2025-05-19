@@ -14,7 +14,7 @@ export default function QuoteList({ quotes, addToFavorites }) {
     <div className={styles.quoteList}>
       {quotes.map((quote) => (
         <div className={styles.quoteContainer}>
-          <React.Fragment key={quote.id}>
+          <div key={quote.id}>
             <QuoteCard quote={quote} addToFavorites={addToFavorites} />
             <button
               className={styles.buttons}
@@ -22,7 +22,7 @@ export default function QuoteList({ quotes, addToFavorites }) {
             >
               Vis citat
             </button>
-          </React.Fragment>
+          </div>
         </div>
       ))}
     </div>

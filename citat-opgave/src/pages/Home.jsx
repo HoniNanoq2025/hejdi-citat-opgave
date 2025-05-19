@@ -10,12 +10,15 @@ export default function Home({
   addToFavorites,
   page,
   setPage,
-  totalPages,
+  total,
 }) {
   const [sortBy, setSortBy] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
   const getFilteredandSortedQuotes = () => {
+    if (!quotes || !Array.isArray(quotes)) {
+      return [];
+    }
     let filtered = [...quotes];
 
     if (searchTerm.trim() !== "") {
@@ -63,11 +66,7 @@ export default function Home({
       />
 
       <div className={styles.pagination}>
-        <Pagination
-          page={page}
-          totalPages={totalPages}
-          onPageChange={setPage}
-        />
+        <Pagination page={page} total={total} onPageChange={setPage} />
       </div>
     </div>
   );
